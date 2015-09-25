@@ -27,10 +27,10 @@ var wuTangJake = new Enemy({
   name: "Wu-Tang Jake",
   greeting: "May the Wu be with you.",
   brag: "Wu Tang Jake ain't nothing to mess with!",
-  currentHealth: "90",
-  maxHealth: "90",
-  currentPower: "9",
-  startingPower: "9",
+  currentHealth: 90,
+  maxHealth: 90,
+  currentPower: 9,
+  startingPower: 9,
 });
 
 
@@ -38,20 +38,20 @@ var pithyJake = new Enemy({
   name: "Pithy Jake",
   greeting: "No judgements here",
   brag: "I told you to follow your heart...not lose your head!",
-  currentHealth: "110",
-  maxHealth: "110",
-  currentPower: "7",
-  startingPower: "7",
+  currentHealth: 110,
+  maxHealth: 110,
+  currentPower: 7,
+  startingPower: 7,
 });
 
 var sedatedJake = new Enemy({
   name: "Sedated Jake",
   greeting: "Sorry I'm late, I just woke up.  Prepare to die.",
   brag: "I can't believe I got out of bed for this.",
-  currentHealth: "70",
-  maxHealth: "70",
-  currentPower: "12",
-  startingPower: "12",
+  currentHealth: 70,
+  maxHealth: 70,
+  currentPower: 12,
+  startingPower: 12,
 });
 
 
@@ -368,5 +368,6 @@ function enemyHealthCheck(attacker, enemy){
 function playerHealthCheck(attacker, enemy){
   if (attacker.currentHealth < 0) {
     console.log('Game over!!');
+    enemy.currentPower = enemy.startingPower;
   }
 }
