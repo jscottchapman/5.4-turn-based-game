@@ -23,14 +23,46 @@ body {
 
 .scene {
   width:100%;
-  height:500px;
+  height:570px;
   margin-top:0;
   background-image: url('../templates/assets/img/street_scene.jpg');
+  background-size: 100%;
+  background-position: 0px -100px;
 }
+
+.scene_console {
+  width:100%;
+  height:100px;
+}
+
+#players {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
 
 .foot {
   width:100%;
-  height: 250px;
+  height: 150px;
   margin-bottom: 0px;
   background-color: #000;
+}
+
+.foot_game {
+  color: #fff;
+  width:100%;
+  height: 100px;
+}
+
+.foot_game ul{
+  margin: 0;
+
+}
+
+.foot_game_img {
+  display: inline-block;
+}
+
+.foot_game_story {
+  display: inline-block;
 }
