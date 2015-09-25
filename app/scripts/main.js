@@ -15,11 +15,11 @@ INSTANCES
 Player Instances
 **********/
 
+// (name, currentHealth, maxHealth, currentPower, startingPower)
+
 var faith = new Player('Faith', 100, 100, 10, 10);
-var joel = new Player('Joel', 100, 100, 10, 10);
-var mason = new Player('Mason', 30, 30, 6, 6);
-var practice = new Player('target', 100, 100, 1, 1);
-var test = new Player('test', 100, 100, 1, 1);
+var joel = new Player('Joel', 120, 120, 8, 8);
+var mason = new Player('Jake', 80, 80, 12, 12);
 
 
 /**********
@@ -29,35 +29,32 @@ Enemy Instances
 var wuTangJake = new Enemy({
   name: "Wu-Tang Jake",
   greeting: "May the Wu be with you.",
-  damage: 3,
   brag: "Wu Tang Jake ain't nothing to mess with!",
-  currentHealth: "",
-  maxHealth: "",
-  currentPower: "",
-  startingPower: "",
+  currentHealth: "90",
+  maxHealth: "90",
+  currentPower: "9",
+  startingPower: "9",
 });
 
 
 var pithyJake = new Enemy({
   name: "Pithy Jake",
   greeting: "No judgements here",
-  damage: 2,
   brag: "I told you to follow your heart...not lose your head!",
-  currentHealth: "",
-  maxHealth: "",
-  currentPower: "",
-  startingPower: "",
+  currentHealth: "110",
+  maxHealth: "110",
+  currentPower: "7",
+  startingPower: "7",
 });
 
 var sedatedJake = new Enemy({
   name: "Sedated Jake",
   greeting: "Sorry I'm late, I just woke up.  Prepare to die.",
-  damage: 1,
   brag: "I can't believe I got out of bed for this.",
-  currentHealth: "",
-  maxHealth: "",
-  currentPower: "",
-  startingPower: "",
+  currentHealth: "70",
+  maxHealth: "70",
+  currentPower: "12",
+  startingPower: "12",
 });
 
 
@@ -89,6 +86,10 @@ function Enemy(options){
   this.greeting = options.greeting;
   this.damage = options.damage;
   this.brag = options.brag;
+  this.currentHealth = options.currentHealth;
+  this.maxHealth = options.maxHealth;
+  this.currentPower = options.currentPower;
+  this.startingPower = options.startingPower;
 }
 
 
@@ -250,7 +251,7 @@ Enemy attack functions - Punch
 *********/
 
 function enemyPunchRandomizer(attacker, enemy){
-  if (Math.random() < 1/4) {
+  if (Math.random() > 1/4) {
     enemyBasicPunch(attacker, enemy);
   } else {
     enemyCriticalPunch(attacker, enemy);
@@ -276,7 +277,7 @@ Enemy attack functions - Kick
 *********/
 
 function enemyKickRandomizer(attacker, enemy){
-  if (Math.random() < 1/4) {
+  if (Math.random() > 1/4) {
     enemyBasicKick(attacker, enemy);
   } else {
     enemyCriticalKick(attacker, enemy);
@@ -302,7 +303,7 @@ Enemy attack functions - Potion
 *********/
 
 function enemyPotionRandomizer(attacker, enemy){
-  if (Math.random() < 1/4) {
+  if (Math.random() > 1/4) {
     enemyBasicPotion(attacker, enemy);
   } else {
     enemyCriticalPotion(attacker, enemy);
@@ -329,7 +330,7 @@ Enemy attack functions - Increase Attack
 *********/
 
 function enemyIncreaseAttackRandomizer(attacker, enemy){
-  if (Math.random() < 1/4) {
+  if (Math.random() > 1/4) {
     enemyBasicIncreaseAttack(attacker, enemy);
   } else {
     enemyCriticalIncreaseAttack(attacker, enemy);
