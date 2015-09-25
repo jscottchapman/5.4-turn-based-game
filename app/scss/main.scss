@@ -23,7 +23,7 @@ body {
 .container {
   width:950px;
   margin: 0 auto;
-  position: relative;
+
 }
 
 .scene {
@@ -33,7 +33,45 @@ body {
   background-image: url('../templates/assets/img/street_scene.jpg');
   background-size: 100%;
   background-position: 0px -100px;
+  position: relative;
 }
+
+.playerHealthDisplay {
+  position: absolute;
+  border: 1px solid red;
+  width:200px;
+  height:100px;
+  top:0;
+  left:0;
+}
+
+.enemyHealthDisplay {
+  position: absolute;
+  border: 1px solid green;
+  width:200px;
+  height:100px;
+  top:0;
+  right:0;
+}
+
+.playerDisplay {
+  position: absolute;
+  border: 1px solid yellow;
+  width:400px;
+  height:300px;
+  bottom:0;
+  left:0;
+}
+
+.enemyDisplay {
+  position: absolute;
+  border: 1px solid purple;
+  width:400px;
+  height:300px;
+  bottom:0;
+  right:0;
+}
+
 
 .pop_up_console {
   position: absolute;
