@@ -23,6 +23,31 @@
   </head>
   <body>
 
+  <div class="scene">
+    <div class="scene_console">
+      <select id="players" name="players" style="width:250px;">
+          <option value="">Select A Player</option>
+          <option value="Jake" data-image="./templates/assets/img/jake.jpg" data-description="Jake The Myth">Jake</option>
+          <option value="Faith" data-image="./templates/assets/img/faith.jpg" data-description="Faith">Faith</option>
+          <option value="Joel" data-image=".templates/assets/img/joel.jpg" data-description="Joel">Joel</option>
+      </select>
+    </div>
+  </div>
+  <div class="foot">
+    <div class="foot_game">
+      <ul>
+        <li class="foot_game_img"><img src="./templates/assets/img/logo.png" style="width:50%; height:50%;"></img></li>
+        <li class="foot_game_story"><p>AHH!! Somebody help!!! Some IMPOSTORS just hijacked a plane and
+          they're pretending to be our Front End Instructor, Jake Smith! Hurry,
+          hurry, Iron Yard students, we must act fast before they reach and
+          destroy headquarters!!!</p></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
   <!-- build:js scripts/vendor.min.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -34,12 +59,11 @@
 
   <!-- build:js scripts/app.min.js -->
   <script src="scripts/templates.js"></script>
-  <script src="scripts/app.js"></script>
+  <script src="scripts/models.js"></script>
+  <script src="scripts/views.js"></script>
+  <script src="scripts/main.js"></script>
   <!-- endbuild -->
 
-  <script>
-    require('main');
-  </script>
 
 </body>
 </html>
