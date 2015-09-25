@@ -43,12 +43,12 @@ gulp.task('scripts', function () {
   return gulp.src('app/scripts/**/*.js')
     .pipe(plumber())
     .pipe(babel())
-    .pipe(wrapCommonjs({
-      relativePath: 'app/scripts',
-      pathModifier: function (path) {
-        return path.replace(/.js$/, '');
-      }
-    }))
+    // .pipe(wrapCommonjs({
+    //   relativePath: 'app/scripts',
+    //   pathModifier: function (path) {
+    //     return path.replace(/.js$/, '');
+    //   }
+    // }))
     .pipe(concat('app.js'))
     .pipe(gulp.dest('.tmp/scripts/'))
     .pipe(browserSync.reload({stream: true}));
