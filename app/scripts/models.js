@@ -6,7 +6,7 @@ Post.fetch = function(){
     $(document).trigger('posts:fetched', [posts]);
     return posts;
   });
-}
+};
 
 
 window.Post = Post;
