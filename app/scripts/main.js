@@ -1,5 +1,5 @@
-var models = require('models');
-var views = require('views');
+// var models = require('models');
+// var views = require('views');
 
 $(document).ready(function(){
   $('body').prepend(JST.application());
@@ -26,15 +26,7 @@ var test = new Player('test', 100, 100, 1, 1);
 Enemy Instances
 **********/
 
-// Pick a Random enemy using a the damage value and a random number generator
-//var enemy-array =[sedated-jake, pithy-jake, wu-tang-jake]
-
-var pick_enemy = _.filter([sedated-jake, pithy-jake, wu-tang-jake],
-    function(person){
-      return _.random(1, 3) === this.damage;
-});
-
-var wu_tang_jake = new Enemy({
+var wuTangJake = new Enemy({
   name: "Wu-Tang Jake",
   greeting: "May the Wu be with you.",
   damage: 3,
@@ -46,7 +38,7 @@ var wu_tang_jake = new Enemy({
 });
 
 
-var pithy_jake = new Enemy({
+var pithyJake = new Enemy({
   name: "Pithy Jake",
   greeting: "No judgements here",
   damage: 2,
@@ -57,7 +49,7 @@ var pithy_jake = new Enemy({
   startingPower: "",
 });
 
-var sedated_jake = new Enemy({
+var sedatedJake = new Enemy({
   name: "Sedated Jake",
   greeting: "Sorry I'm late, I just woke up.  Prepare to die.",
   damage: 1,
@@ -67,6 +59,15 @@ var sedated_jake = new Enemy({
   currentPower: "",
   startingPower: "",
 });
+
+
+// Pick a Random enemy using a the damage value and a random number generator
+//var enemy-array =[sedated-jake, pithy-jake, wu-tang-jake]
+
+function pickEnemy() {
+  return _.sample([wuTangJake, sedatedJake, pithyJake]);
+}
+
 
 
 
