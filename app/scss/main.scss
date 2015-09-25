@@ -15,15 +15,20 @@ $base-font-color: $dark-gray;
 $base-background-color: $very-light-gray;
 
 body {
-  background-color: $base-background-color;
+  background-color: #000;
   color: $base-font-color;
   font-family: $base-font-family;
 }
 
+.container {
+  width:950px;
+  margin: 0 auto;
+  position: relative;
+}
 
 .scene {
   width:100%;
-  height:570px;
+  height:400px;
   margin-top:0;
   background-image: url('../templates/assets/img/street_scene.jpg');
   background-size: 100%;
@@ -31,8 +36,14 @@ body {
 }
 
 .scene_console {
-  width:100%;
-  height:100px;
+  position: absolute;
+  width:450px;
+  height:350px;
+  margin-top: 125px;
+  background-color: blue;
+  transform: translateX(50%);
+  right: 50%;
+  z-index: 1;
 }
 
 #players {
@@ -43,9 +54,13 @@ body {
 
 .foot {
   width:100%;
-  height: 150px;
+  height: 200px;
   margin-bottom: 0px;
   background-color: #000;
+  font-family: helvetica;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: lighter;
 }
 
 .foot_game {
@@ -62,11 +77,12 @@ body {
 .foot_game_img {
   display: inline-block;
   margin: 0;
-  width: 300px;
-
 }
 
 .foot_game_story {
+  vertical-align: top;
   display: inline-block;
-  width: 200px;
+  width: 500px;
+  margin-top: 50px;
+  margin-left:50px;
 }
