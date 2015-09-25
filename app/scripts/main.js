@@ -26,14 +26,6 @@ var test = new Player('test', 100, 100, 1, 1);
 Enemy Instances
 **********/
 
-// Pick a Random enemy using a the damage value and a random number generator
-//var enemy-array =[sedated-jake, pithy-jake, wu-tang-jake]
-
-var pick_enemy = _.filter([sedated-jake, pithy-jake, wu-tang-jake],
-    function(person){
-      return _.random(1, 3) === this.damage;
-});
-
 var wu_tang_jake = new Enemy({
   name: "Wu-Tang Jake",
   greeting: "May the Wu be with you.",
@@ -68,6 +60,19 @@ var sedated_jake = new Enemy({
   startingPower: "",
 });
 
+
+// Pick a Random enemy using a the damage value and a random number generator
+//var enemy-array =[sedated-jake, pithy-jake, wu-tang-jake]
+
+
+var randomNumber = function(){
+  return _.random(1, 3);
+};
+
+var pick_enemy = _.filter([wu_tang_jake, sedated_jake, pithy_jake], function(person){
+    return randomNumber() === person.damage;
+  }
+);
 
 
 
