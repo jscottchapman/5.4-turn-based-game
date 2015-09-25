@@ -38,6 +38,7 @@ function Player(name, currentHealth, maxHealth, currentPower, startingPower) {
   this.currentHealth = currentHealth || 10;
   this.maxHealth = maxHealth || 10;
   this.currentPower = currentPower || 3;
+  this.startingPower = startingPower || 3;
 }
 
 
