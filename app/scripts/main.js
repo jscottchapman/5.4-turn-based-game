@@ -169,7 +169,7 @@ PLAYER HEALTH DISPLAY FUNCTIONS
 ****************************************************/
 
 function enemyHealthStatus(enemy){
-$(".enemyHealthDisplay").append("<h1>" + enemy.currentHealth + "</h1>");
+$(".enemyHealthNumber").text(enemy.currentHealth);
 }
 
 
@@ -275,7 +275,7 @@ ENEMY ATTACK FUNCTIONS
 Enemy Health Display function
 ***************************************************/
 function attackerHealthStatus(attacker){
-$(".playerHealthDisplay").append("<h1>" + attacker.currentHealth + "</h1>");
+$(".playerHealthNumber").text(attacker.currentHealth);
 }
 
 /*********
@@ -380,14 +380,14 @@ function enemyBasicPotion(attacker, enemy){
   if (enemy.currentHealth > enemy.maxHealth) {
     enemy.currentHealth = enemy.maxHealth;
   }
-  enemyHealthStatus(attacker);
+  enemyHealthStatus(enemy);
   console.log(enemy.name + ' gained 8 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalPotion(attacker, enemy){
   enemy.currentHealth = enemy.currentHealth + 12;
-  enemyHealthStatus(attacker);
+  enemyHealthStatus(enemy);
   console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' gained 12 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
