@@ -172,8 +172,8 @@ Player attack functions - Punch
 function basicPunch(attacker, enemy){
   var roundDamage = attacker.currentPower + Math.round((Math.random()) * (5 - 0));
   enemy.currentHealth = enemy.currentHealth - roundDamage;
-  if (attacker.currentHealth < 0){
-    attacker.currentHealth = 0;
+  if (enemy.currentHealth < 0){
+    enemy.currentHealth = 0;
   }
 
   console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
@@ -183,8 +183,8 @@ function basicPunch(attacker, enemy){
 function criticalPunch(attacker, enemy){
   var roundDamage = attacker.currentPower + Math.round((Math.random()) * (7 - 5) + 5);
   enemy.currentHealth = enemy.currentHealth - roundDamage;
-  if (attacker.currentHealth < 0){
-    attacker.currentHealth = 0;
+  if (enemy.currentHealth < 0){
+    enemy.currentHealth = 0;
   }
 
   console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
@@ -198,8 +198,8 @@ Player attack functions - Kick
 function basicKick(attacker, enemy){
   var roundDamage = Math.round(attacker.currentPower * 1) + Math.round((Math.random()) * (10 + 5) - 5);
   enemy.currentHealth = enemy.currentHealth - roundDamage;
-  if (attacker.currentHealth < 0){
-    attacker.currentHealth = 0;
+  if (enemy.currentHealth < 0){
+    enemy.currentHealth = 0;
   }
 
   console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
@@ -209,8 +209,8 @@ function basicKick(attacker, enemy){
 function criticalKick(attacker, enemy){
   var roundDamage = Math.round(attacker.currentPower * 1) + Math.round((Math.random()) * (12 - 10) + 10);
   enemy.currentHealth = enemy.currentHealth - roundDamage;
-  if (attacker.currentHealth < 0){
-    attacker.currentHealth = 0;
+  if (enemy.currentHealth < 0){
+    enemy.currentHealth = 0;
   }
 
   console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
