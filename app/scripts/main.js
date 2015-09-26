@@ -69,24 +69,24 @@ var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
 
 function selectWuTangJake () {
   findWuTangJake.style.display = "block";
-  $("#greeting_brag_update").text(wuTangJake.greeting)
+  $("#greeting_brag_update").text(wuTangJake.greeting);
 }
 
 function selectSedatedJake () {
   findSedatedJake.style.display = "block";
-  $("#greeting_brag_update").text(sedatedJake.greeting)
+  $("#greeting_brag_update").text(sedatedJake.greeting);
 }
 
 function selectPithyJake () {
   findPithyJake.style.display = "block";
-  $("#greeting_brag_update").text(pithyJake.greeting)
+  $("#greeting_brag_update").text(pithyJake.greeting);
 }
 
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
 
-    $('.enemyName').text(enemySelect.name + " :")  
+    $('.enemyName').text(enemySelect.name + " :");
 
     enemyHealthStatus(enemySelect);
     if (enemySelect === wuTangJake) {
@@ -317,7 +317,7 @@ Enemy attack functions - Randomizer
 *********/
 
 function enemyAttack(attacker, enemy){
-  $('#greeting_brag_update').text(enemy.brag)
+  $('#greeting_brag_update').text(enemy.brag);
   var randomNumber = Math.random();
   if (randomNumber < 1/4 ) {
     enemyPunchRandomizer(attacker, enemy);
