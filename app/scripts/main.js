@@ -440,7 +440,8 @@ function enemyHealthCheck(attacker, enemy){
   if (enemy.currentHealth > 0) {
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
-    console.log('Congratulations! You defeated ' + enemy.name);
+    $('.enemyDisplay').fadeOut(3000, function(){});
+    alert('Congratulations! You defeated ' + enemy.name);
     attacker.currentHealth = attacker.maxHealth;
     currentEnemy = pickEnemy();
   }
