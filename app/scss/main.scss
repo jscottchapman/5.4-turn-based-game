@@ -11,12 +11,10 @@ $medium-gray: #999;
 $light-gray: #ddd;
 $very-light-gray: #fafafa;
 
-$base-font-color: $dark-gray;
-$base-background-color: $very-light-gray;
+
 
 body {
   background-color: #000;
-  color: $base-font-color;
   font-family: $base-font-family;
 }
 
@@ -25,6 +23,30 @@ body {
   margin: 0 auto;
 
 }
+
+.pop_up_console {
+  color: #fff;
+  position: absolute;
+  width:450px;
+  height:350px;
+  margin-top: 125px;
+  background-image: url('../templates/assets/img/console.png');
+  transform: translateX(50%);
+  right: 50%;
+  z-index: 1;
+  text-align: center;
+  border: 1px solid white;
+}
+
+.pop_up_console li {
+  margin-top: 180px;
+  list-style: none;
+  font-family: helvetica;
+  font-weight: lighter;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
 
 .scene {
   width:100%;
@@ -54,7 +76,9 @@ body {
   right:0;
 }
 
-.playerDisplay {
+
+#playerDisplayJake {
+  display: none;
   position: absolute;
   border: 1px solid yellow;
   width:400px;
@@ -63,6 +87,27 @@ body {
   left:0;
 }
 
+#playerDisplayFaith {
+  display: none;
+  position: absolute;
+  border: 1px solid yellow;
+  width:400px;
+  height:300px;
+  bottom:0;
+  left:0;
+}
+
+#playerDisplayJoel {
+  display: none;
+  position: absolute;
+  border: 1px solid yellow;
+  width:400px;
+  height:300px;
+  bottom:0;
+  left:0;
+}
+
+
 .enemyDisplay {
   position: absolute;
   border: 1px solid purple;
@@ -70,24 +115,6 @@ body {
   height:300px;
   bottom:0;
   right:0;
-}
-
-
-.pop_up_console {
-  position: absolute;
-  width:450px;
-  height:350px;
-  margin-top: 125px;
-  background-color: blue;
-  transform: translateX(50%);
-  right: 50%;
-  z-index: 1;
-  text-align: center;
-}
-
-#players {
-  margin-top: 20px;
-  margin-left: 20px;
 }
 
 
@@ -106,14 +133,19 @@ body {
   color: #000;
   width:100%;
   height: 100px;
+  position: relative;
 }
 
-.foot_game ul{
-  margin: 0;
-
+.foot_game_console {
+  padding-top: 50px;
+  position: absolute;
+  width:475px;
+  left: 0;
+  border: 1px solid red;
 }
 
-.foot_game_img {
-  display: inline-block;
-  margin: 0;
+.foot_game_img img{
+  position: absolute;
+  width:475px;
+  padding-left: 100px;
 }

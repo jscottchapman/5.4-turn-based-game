@@ -64,7 +64,9 @@ var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
-    // display enemySelect
+    /*********************************************
+     display enemySelect
+    *********************************************/
     pickEnemyArray = _.filter(pickEnemyArray, function(object){
       return object !== enemySelect;
     });
@@ -430,17 +432,17 @@ $('.actionButton').click(function(){
 Pop-up selector
 *********/
 
-$('#players').on('change', function() {
+$('#playerList').on('change', function() {
   value = $(this).val();
   if (value !== "") {
     $('.pop_up_console').fadeOut('slow', function(){});
     $('.actionButton').prop('disabled', false);
     currentEnemy = pickEnemy();
-    if (value === "Jake") {
+    if (value === "selectJake") {
       heroJake(jake);
-    } else if (value === "Faith"){
+    } else if (value === "selectFaith"){
       heroFaith(faith);
-    } else if (value === "Joel") {
+    } else if (value === "selectJoel") {
       heroJoel(joel);
     } else {
       return "";
