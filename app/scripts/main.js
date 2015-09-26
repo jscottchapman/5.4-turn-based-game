@@ -421,7 +421,7 @@ $('.actionButton').click(function(){
     $('.actionButton').prop('disabled', true);
     setTimeout(function(){
         $('.actionButton').prop('disabled', false);
-    }, 3000);
+    }, 1000);
 });
 
 
