@@ -1,12 +1,12 @@
 $(document).ready(function(){
   $('body').prepend(JST.application());
+  $('.actionButton').prop('disabled', true);
 });
 
 
 /****************************************************
 INSTANCES
 ****************************************************/
-
 
 /**********
 Player Instances
@@ -16,7 +16,7 @@ Player Instances
 
 var faith = new Player('Faith', 100, 100, 10, 10);
 var joel = new Player('Joel', 120, 120, 8, 8);
-var mason = new Player('Jake', 80, 80, 12, 12);
+var jake = new Player('Jake', 80, 80, 12, 12);
 
 
 /**********
@@ -58,12 +58,31 @@ var sedatedJake = new Enemy({
 // Pick a Random enemy using a the damage value and a random number generator
 //var enemy-array =[sedated-jake, pithy-jake, wu-tang-jake]
 
+var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
+
+
 function pickEnemy() {
-  return _.sample([wuTangJake, sedatedJake, pithyJake]);
+  if (pickEnemyArray.length > 0) {
+    var enemySelect = _.sample(pickEnemyArray);
+    /*********************************************
+     display enemySelect
+    *********************************************/
+    pickEnemyArray = _.filter(pickEnemyArray, function(object){
+      return object !== enemySelect;
+    });
+    return enemySelect;
+  } else {
+    youWon();
+  }
 }
 
+var hero;
+var currentEnemy;
 
 
+function youWon() {
+  alert('YOU WON!!11!!11!!11');
+}
 
 
 /****************************************************
@@ -362,6 +381,7 @@ function enemyHealthCheck(attacker, enemy){
   } else {
     console.log('Congratulations! You defeated ' + enemy.name);
     attacker.currentHealth = attacker.maxHealth;
+    currentEnemy = pickEnemy();
   }
 }
 
@@ -370,4 +390,78 @@ function playerHealthCheck(attacker, enemy){
     console.log('Game over!!');
     enemy.currentPower = enemy.startingPower;
   }
+}
+
+
+
+
+
+/****************************************************
+RESPONSIVE INTERACTIONS
+****************************************************/
+
+/*********
+Attack buttons
+*********/
+
+$('.punchButton').on('click', function(){
+  hero.punch(currentEnemy);
+});
+
+$('.kickButton').on('click', function(){
+  hero.kick(currentEnemy);
+});
+
+$('.potionButton').on('click', function(){
+  hero.potion(currentEnemy);
+});
+
+$('.increaseAttackButton').on('click', function(){
+  hero.increaseAttack(currentEnemy);
+});
+
+$('.actionButton').click(function(){
+    $('.actionButton').prop('disabled', true);
+    setTimeout(function(){
+        $('.actionButton').prop('disabled', false);
+    }, 1000);
+});
+
+
+/*********
+Pop-up selector
+*********/
+
+$('#playerList').on('change', function() {
+  value = $(this).val();
+  if (value !== "") {
+    $('.pop_up_console').fadeOut('slow', function(){});
+    $('.actionButton').prop('disabled', false);
+    currentEnemy = pickEnemy();
+    if (value === "selectJake") {
+      heroJake(jake);
+    } else if (value === "selectFaith"){
+      heroFaith(faith);
+    } else if (value === "selectJoel") {
+      heroJoel(joel);
+    } else {
+      return "";
+    }
+  }
+});
+
+/*********
+Hero assignment and visibility functions
+*********/
+
+function heroJake(thisHero){
+  hero = jake;
+}
+
+function heroFaith(thisHero){
+  hero = faith;
+}
+
+function heroJoel(thisHero){
+  hero = joel;
 }
