@@ -447,8 +447,8 @@ function enemyHealthCheck(attacker, enemy){
 }
 
 function playerHealthCheck(attacker, enemy){
-  if (attacker.currentHealth < 0) {
-    console.log('Game over!!');
+  if (attacker.currentHealth <= 0) {
+    alert('Game over!!');
     enemy.currentPower = enemy.startingPower;
   }
 }
