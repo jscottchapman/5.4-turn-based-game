@@ -116,8 +116,11 @@ var currentEnemy;
 
 
 function youWon() {
-  alert('YOU WON!!11!!11!!11');
+  if(alert('YOU WON!!11!!11!!11')){}
+  else window.location.reload();
 }
+
+
 
 
 /****************************************************
@@ -466,7 +469,9 @@ function enemyHealthCheck(attacker, enemy){
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
     $('.enemyDisplay').fadeOut(3000, function(){});
-    alert('Congratulations! You defeated ' + enemy.name);
+    if(alert('Congratulations! You defeated ' + enemy.name)){}
+    else window.location.reload();
+
     attacker.currentHealth = attacker.maxHealth;
     currentEnemy = pickEnemy();
   }
@@ -474,7 +479,8 @@ function enemyHealthCheck(attacker, enemy){
 
 function playerHealthCheck(attacker, enemy){
   if (attacker.currentHealth <= 0) {
-    alert('Game over!!');
+    if(alert('Game over!!')){}
+    else window.location.reload();
     enemy.currentPower = enemy.startingPower;
   }
 }
