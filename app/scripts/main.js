@@ -82,7 +82,10 @@ function selectPithyJake () {
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
-
+    /*********************************************
+     display enemySelect
+    *********************************************/
+    enemyHealthStatus(enemySelect);
     if (enemySelect === wuTangJake) {
       selectWuTangJake();
     }
@@ -192,6 +195,13 @@ Player.prototype.increaseAttack = function(enemy){
 /****************************************************
 PLAYER ATTACK FUNCTIONS
 ****************************************************/
+/****************************************************
+PLAYER HEALTH DISPLAY FUNCTIONS
+****************************************************/
+
+function enemyHealthStatus(enemy){
+$(".enemyHealthNumber").text(enemy.currentHealth);
+}
 
 
 /*********
@@ -204,7 +214,7 @@ function basicPunch(attacker, enemy){
   if (enemy.currentHealth < 0){
     enemy.currentHealth = 0;
   }
-
+  enemyHealthStatus(enemy);
   console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
@@ -215,7 +225,7 @@ function criticalPunch(attacker, enemy){
   if (enemy.currentHealth < 0){
     enemy.currentHealth = 0;
   }
-
+  enemyHealthStatus(enemy);
   console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
@@ -230,7 +240,7 @@ function basicKick(attacker, enemy){
   if (enemy.currentHealth < 0){
     enemy.currentHealth = 0;
   }
-
+  enemyHealthStatus(enemy);
   console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
@@ -241,7 +251,7 @@ function criticalKick(attacker, enemy){
   if (enemy.currentHealth < 0){
     enemy.currentHealth = 0;
   }
-
+  enemyHealthStatus(enemy);
   console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
@@ -255,12 +265,14 @@ function basicPotion(attacker, enemy){
   if (attacker.currentHealth > attacker.maxHealth) {
     attacker.currentHealth = attacker.maxHealth;
   }
+  attackerHealthStatus(attacker);
   console.log(attacker.name + ' gained 8 health and now has ' + attacker.currentHealth + ' health remaining');
   enemyHealthCheck(attacker, enemy);
 }
 
 function criticalPotion(attacker, enemy){
   attacker.currentHealth = attacker.currentHealth + 12;
+  attackerHealthStatus(attacker);
   console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' gained 12 health and now has ' + attacker.currentHealth + ' health remaining');
   enemyHealthCheck(attacker, enemy);
 }
@@ -285,10 +297,17 @@ function criticalIncreaseAttack(attacker, enemy){
 
 
 
+
 /****************************************************
 ENEMY ATTACK FUNCTIONS
 ****************************************************/
 
+/***************************************************
+Enemy Health Display function
+***************************************************/
+function attackerHealthStatus(attacker){
+$(".playerHealthNumber").text(attacker.currentHealth);
+}
 
 /*********
 Enemy attack functions - Randomizer
@@ -325,7 +344,7 @@ function enemyBasicPunch(attacker, enemy){
   if (attacker.currentHealth < 0){
     attacker.currentHealth = 0;
   }
-
+  attackerHealthStatus(attacker);
   console.log(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
@@ -336,7 +355,7 @@ function enemyCriticalPunch(attacker, enemy){
   if (attacker.currentHealth < 0){
     attacker.currentHealth = 0;
   }
-
+  attackerHealthStatus(attacker);
   console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
@@ -359,7 +378,7 @@ function enemyBasicKick(attacker, enemy){
   if (attacker.currentHealth < 0){
     attacker.currentHealth = 0;
   }
-
+  attackerHealthStatus(attacker);
   console.log(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
@@ -370,7 +389,7 @@ function enemyCriticalKick(attacker, enemy){
   if (attacker.currentHealth < 0){
     attacker.currentHealth = 0;
   }
-
+  attackerHealthStatus(attacker);
   console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
@@ -392,12 +411,14 @@ function enemyBasicPotion(attacker, enemy){
   if (enemy.currentHealth > enemy.maxHealth) {
     enemy.currentHealth = enemy.maxHealth;
   }
+  enemyHealthStatus(enemy);
   console.log(enemy.name + ' gained 8 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalPotion(attacker, enemy){
   enemy.currentHealth = enemy.currentHealth + 12;
+  enemyHealthStatus(enemy);
   console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' gained 12 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
@@ -440,15 +461,16 @@ function enemyHealthCheck(attacker, enemy){
   if (enemy.currentHealth > 0) {
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
-    console.log('Congratulations! You defeated ' + enemy.name);
+    $('.enemyDisplay').fadeOut(3000, function(){});
+    alert('Congratulations! You defeated ' + enemy.name);
     attacker.currentHealth = attacker.maxHealth;
     currentEnemy = pickEnemy();
   }
 }
 
 function playerHealthCheck(attacker, enemy){
-  if (attacker.currentHealth < 0) {
-    console.log('Game over!!');
+  if (attacker.currentHealth <= 0) {
+    alert('Game over!!');
     enemy.currentPower = enemy.startingPower;
   }
 }
@@ -518,16 +540,20 @@ Hero assignment and visibility functions
 
 function heroJake(thisHero){
   hero = jake;
+  attackerHealthStatus(jake);
   findJake.style.display = "block";
 
 }
 
 function heroFaith(thisHero){
   hero = faith;
+  attackerHealthStatus(faith);
+
   findFaith.style.display = "block";
 }
 
 function heroJoel(thisHero){
   hero = joel;
+  attackerHealthStatus(joel);
   findJoel.style.display = "block";
 }
