@@ -18,6 +18,13 @@ var faith = new Player('Faith', 100, 100, 10, 10);
 var joel = new Player('Joel', 120, 120, 8, 8);
 var jake = new Player('Jake', 80, 80, 12, 12);
 
+var findJake = document.getElementById("playerDisplayJake");
+var findFaith = document.getElementById("playerDisplayFaith");
+var findJoel = document.getElementById("playerDisplayJoel");
+
+var findWuTangJake = document.getElementById("enemyDisplayWutangJake");
+var findSedatedJake = document.getElementById("enemyDisplaySedatedJake");
+var findPithyJake = document.getElementById("enemyDisplayPithyJake");
 
 /**********
 Enemy Instances
@@ -60,13 +67,35 @@ var sedatedJake = new Enemy({
 
 var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
 
+function selectWuTangJake () {
+  findWuTangJake.style.display = "block";
+}
+
+function selectSedatedJake () {
+  findSedatedJake.style.display = "block";
+}
+
+function selectPithyJake () {
+  findPithyJake.style.display = "block";
+}
 
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
-    /*********************************************
-     display enemySelect
-    *********************************************/
+
+    if (enemySelect === wuTangJake) {
+      selectWuTangJake();
+    }
+    else if (enemySelect === sedatedJake) {
+      selectSedatedJake();
+    }
+    else if (enemySelect === pithyJake) {
+      selectPithyJake();
+    }
+    else {
+      return true;
+    }
+
     pickEnemyArray = _.filter(pickEnemyArray, function(object){
       return object !== enemySelect;
     });
@@ -434,7 +463,7 @@ Pop-up selector
 
 $('#playerList').on('change', function() {
   value = $(this).val();
-  if (value !== "") {
+  if (value !== "0") {
     $('.pop_up_console').fadeOut('slow', function(){});
     $('.actionButton').prop('disabled', false);
     currentEnemy = pickEnemy();
@@ -456,12 +485,16 @@ Hero assignment and visibility functions
 
 function heroJake(thisHero){
   hero = jake;
+  findJake.style.display = "block";
+
 }
 
 function heroFaith(thisHero){
   hero = faith;
+  findFaith.style.display = "block";
 }
 
 function heroJoel(thisHero){
   hero = joel;
+  findJoel.style.display = "block";
 }
