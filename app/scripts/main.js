@@ -18,6 +18,13 @@ var faith = new Player('Faith', 100, 100, 10, 10);
 var joel = new Player('Joel', 120, 120, 8, 8);
 var jake = new Player('Jake', 80, 80, 12, 12);
 
+var findJake = document.getElementById("playerDisplayJake");
+var findFaith = document.getElementById("playerDisplayFaith");
+var findJoel = document.getElementById("playerDisplayJoel");
+
+var findWuTangJake = document.getElementById("enemyDisplayWutangJake");
+var findSedatedJake = document.getElementById("enemyDisplaySedatedJake");
+var findPithyJake = document.getElementById("enemyDisplayPithyJake");
 
 /**********
 Enemy Instances
@@ -60,6 +67,17 @@ var sedatedJake = new Enemy({
 
 var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
 
+function selectWuTangJake () {
+  findWuTangJake.style.display = "block";
+}
+
+function selectSedatedJake () {
+  findSedatedJake.style.display = "block";
+}
+
+function selectPithyJake () {
+  findPithyJake.style.display = "block";
+}
 
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
@@ -68,6 +86,19 @@ function pickEnemy() {
      display enemySelect
     *********************************************/
     enemyHealthStatus(enemySelect);
+    if (enemySelect === wuTangJake) {
+      selectWuTangJake();
+    }
+    else if (enemySelect === sedatedJake) {
+      selectSedatedJake();
+    }
+    else if (enemySelect === pithyJake) {
+      selectPithyJake();
+    }
+    else {
+      return true;
+    }
+
     pickEnemyArray = _.filter(pickEnemyArray, function(object){
       return object !== enemySelect;
     });
@@ -430,15 +461,16 @@ function enemyHealthCheck(attacker, enemy){
   if (enemy.currentHealth > 0) {
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
-    console.log('Congratulations! You defeated ' + enemy.name);
+    $('.enemyDisplay').fadeOut(3000, function(){});
+    alert('Congratulations! You defeated ' + enemy.name);
     attacker.currentHealth = attacker.maxHealth;
     currentEnemy = pickEnemy();
   }
 }
 
 function playerHealthCheck(attacker, enemy){
-  if (attacker.currentHealth < 0) {
-    console.log('Game over!!');
+  if (attacker.currentHealth <= 0) {
+    alert('Game over!!');
     enemy.currentPower = enemy.startingPower;
   }
 }
@@ -485,7 +517,7 @@ Pop-up selector
 
 $('#playerList').on('change', function() {
   value = $(this).val();
-  if (value !== "") {
+  if (value !== "0") {
     $('.pop_up_console').fadeOut('slow', function(){});
     $('.actionButton').prop('disabled', false);
     currentEnemy = pickEnemy();
@@ -508,14 +540,19 @@ Hero assignment and visibility functions
 function heroJake(thisHero){
   hero = jake;
   attackerHealthStatus(jake);
+  findJake.style.display = "block";
+
 }
 
 function heroFaith(thisHero){
   hero = faith;
   attackerHealthStatus(faith);
+
+  findFaith.style.display = "block";
 }
 
 function heroJoel(thisHero){
   hero = joel;
   attackerHealthStatus(joel);
+  findJoel.style.display = "block";
 }
