@@ -77,30 +77,9 @@ body {
 }
 
 
-#playerDisplayJake {
+.playerDisplay {
   display: none;
   position: absolute;
-  border: 1px solid yellow;
-  width:400px;
-  height:300px;
-  bottom:0;
-  left:0;
-}
-
-#playerDisplayFaith {
-  display: none;
-  position: absolute;
-  border: 1px solid yellow;
-  width:400px;
-  height:300px;
-  bottom:0;
-  left:0;
-}
-
-#playerDisplayJoel {
-  display: none;
-  position: absolute;
-  border: 1px solid yellow;
   width:400px;
   height:300px;
   bottom:0;
@@ -111,7 +90,6 @@ body {
 .enemyDisplay {
   display: none;
   position: absolute;
-  border: 1px solid purple;
   width:400px;
   height:300px;
   bottom:0;
@@ -137,16 +115,21 @@ body {
   position: relative;
 }
 
-.foot_game_console {
-  padding-top: 50px;
-  position: absolute;
-  width:475px;
-  left: 0;
-  border: 1px solid red;
+.foot_gamer_console {
+  color: #fff;
+  display: inline-block;
+}
+
+.foot_gamer_console button{
+  color: #000;
+}
+
+.foot_game_img {
+  display: inline-block;
 }
 
 .foot_game_img img{
   position: absolute;
-  width:475px;
-  padding-left: 100px;
+  top: 0px;
+  right: 0px;
 }
