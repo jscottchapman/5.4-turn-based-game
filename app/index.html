@@ -23,7 +23,7 @@
   </head>
   <body>
 
-
+    <div class="pop_up_console_screen"></div>
     <div id="selectAPlayer" class="pop_up_console">
       <li><b><font size="3rem">MISSION:</font></b><p>AHH!! Somebody help!!! Some <b>IMPOSTORS</b> just hijacked a plane and
         they're pretending to be our Front End Instructor, <b>Jake Smith</b>! Hurry,
@@ -36,11 +36,7 @@
           <option value="selectFaith" class="selectFaith" data-image="./templates/assets/img/faith.jpg" data-description="Faith">Faith</option>
           <option value="selectJoel" class="selectJoel" data-image=".templates/assets/img/joel.jpg" data-description="Joel">Joel</option>
         </select></form></li>
-
-
-
     </div>
-
 
 <div class="container">
   <div class="scene">
@@ -49,21 +45,24 @@
     <div id="playerDisplayJake" class="playerDisplay"><img src="./templates/assets/img/player_jake.png" style="height:100%; margin-left:70px;"></div>
     <div id="playerDisplayFaith" class="playerDisplay"><img src="./templates/assets/img/player_faith.png" style="height:100%; margin-left:70px;"></div>
     <div id="playerDisplayJoel" class="playerDisplay"><img src="./templates/assets/img/player_joel.png" style="height:100%; margin-left:70px;"></div>
-    <div id="enemyDisplaySedatedJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_sedated.png" style="height:100%; margin-left:70px;"></div>
-    <div id="enemyDisplayWutangJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_wutang.png" style="height:100%; margin-left:70px;"></div>
-    <div id="enemyDisplayPithyJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_pithy.png" style="height:100%; margin-left:70px;"></div>
+    <div id="enemyDisplaySedatedJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_sedated.png" style="width:100%; margin-right:0px;"></div>
+    <div id="enemyDisplayWutangJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_wutang.png" style="width:100%; margin-right:0px;"></div>
+    <div id="enemyDisplayPithyJake" class="enemyDisplay"><img src="./templates/assets/img/enemy_pithy.png" style="width:100%; margin-right:0px;"></div>
 
   </div>
   <div class="foot">
     <div class="foot_game">
 
       <ul>
-        <li>
+        <li class="foot_gamer_console_attack">
+          <p id="attack_update">Please select your attack!</p>
           <button class="actionButton punchButton">Punch</button>
           <button class="actionButton kickButton">Kick</button>
           <button class="actionButton potionButton">Potion</button>
           <button class="actionButton increaseAttackButton">Attack</button>
         </li>
+        <li class="foot_gamer_console_taunt">
+          <p id="greeting_brag_update">Please select your attack!</p></li>
         <li class="foot_game_img"><img src="./templates/assets/img/logo.png"></li>
 
         <!-- <div class="foot_game_console">

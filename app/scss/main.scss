@@ -24,6 +24,17 @@ body {
 
 }
 
+.pop_up_console_screen {
+  background-color: #000;
+  position: absolute;
+  z-index: 1;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+  opacity: .6;
+}
+
 .pop_up_console {
   color: #fff;
   position: absolute;
@@ -77,30 +88,9 @@ body {
 }
 
 
-#playerDisplayJake {
+.playerDisplay {
   display: none;
   position: absolute;
-  border: 1px solid yellow;
-  width:400px;
-  height:300px;
-  bottom:0;
-  left:0;
-}
-
-#playerDisplayFaith {
-  display: none;
-  position: absolute;
-  border: 1px solid yellow;
-  width:400px;
-  height:300px;
-  bottom:0;
-  left:0;
-}
-
-#playerDisplayJoel {
-  display: none;
-  position: absolute;
-  border: 1px solid yellow;
   width:400px;
   height:300px;
   bottom:0;
@@ -111,7 +101,6 @@ body {
 .enemyDisplay {
   display: none;
   position: absolute;
-  border: 1px solid purple;
   width:400px;
   height:300px;
   bottom:0;
@@ -137,16 +126,30 @@ body {
   position: relative;
 }
 
-.foot_game_console {
-  padding-top: 50px;
-  position: absolute;
-  width:475px;
-  left: 0;
-  border: 1px solid red;
+.foot_gamer_console_attack {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+}
+
+.foot_gamer_console_attack button{
+  color: #000;
+  margin-right:15px;
+}
+
+.foot_gamer_console_taunt {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.foot_game_img {
+  display: inline-block;
 }
 
 .foot_game_img img{
   position: absolute;
-  width:475px;
-  padding-left: 100px;
+  top: 0px;
+  right: 0px;
 }

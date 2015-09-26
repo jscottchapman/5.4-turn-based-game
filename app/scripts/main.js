@@ -518,6 +518,7 @@ Pop-up selector
 $('#playerList').on('change', function() {
   value = $(this).val();
   if (value !== "0") {
+    $('.pop_up_console_screen').fadeOut('slow', function(){});
     $('.pop_up_console').fadeOut('slow', function(){});
     $('.actionButton').prop('disabled', false);
     currentEnemy = pickEnemy();
