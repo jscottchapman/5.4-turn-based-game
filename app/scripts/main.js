@@ -69,22 +69,25 @@ var pickEnemyArray = [wuTangJake, sedatedJake, pithyJake];
 
 function selectWuTangJake () {
   findWuTangJake.style.display = "block";
+  $("#greeting_brag_update").text(wuTangJake.greeting)
 }
 
 function selectSedatedJake () {
   findSedatedJake.style.display = "block";
+  $("#greeting_brag_update").text(sedatedJake.greeting)
 }
 
 function selectPithyJake () {
   findPithyJake.style.display = "block";
+  $("#greeting_brag_update").text(pithyJake.greeting)
 }
 
 function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
-    /*********************************************
-     display enemySelect
-    *********************************************/
+
+    $('.enemyName').text(enemySelect.name + " :")  
+
     enemyHealthStatus(enemySelect);
     if (enemySelect === wuTangJake) {
       selectWuTangJake();
@@ -215,7 +218,7 @@ function basicPunch(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -226,7 +229,7 @@ function criticalPunch(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -241,7 +244,7 @@ function basicKick(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  console.log(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -252,7 +255,7 @@ function criticalKick(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -266,14 +269,14 @@ function basicPotion(attacker, enemy){
     attacker.currentHealth = attacker.maxHealth;
   }
   attackerHealthStatus(attacker);
-  console.log(attacker.name + ' gained 8 health and now has ' + attacker.currentHealth + ' health remaining');
+  $('#player_attack_update').text(attacker.name + ' gained 8 health and now has ' + attacker.currentHealth + ' health remaining');
   enemyHealthCheck(attacker, enemy);
 }
 
 function criticalPotion(attacker, enemy){
   attacker.currentHealth = attacker.currentHealth + 12;
   attackerHealthStatus(attacker);
-  console.log('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' gained 12 health and now has ' + attacker.currentHealth + ' health remaining');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' gained 12 health and now has ' + attacker.currentHealth + ' health remaining');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -283,13 +286,13 @@ Player attack functions - Increase Attack
 
 function basicIncreaseAttack(attacker, enemy){
   attacker.currentPower = attacker.currentPower + 2;
-  console.log(attacker.name + '\'s attack increased');
+  $('#player_attack_update').text(attacker.name + '\'s attack increased');
   enemyHealthCheck(attacker, enemy);
 }
 
 function criticalIncreaseAttack(attacker, enemy){
   attacker.currentPower = attacker.currentPower + 4;
-  console.log(attacker.name + '\'s attack increased');
+  $('#player_attack_update').text(attacker.name + '\'s attack increased');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -314,6 +317,7 @@ Enemy attack functions - Randomizer
 *********/
 
 function enemyAttack(attacker, enemy){
+  $('#greeting_brag_update').text(enemy.brag)
   var randomNumber = Math.random();
   if (randomNumber < 1/4 ) {
     enemyPunchRandomizer(attacker, enemy);
@@ -345,7 +349,7 @@ function enemyBasicPunch(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  console.log(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -356,7 +360,7 @@ function enemyCriticalPunch(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -379,7 +383,7 @@ function enemyBasicKick(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  console.log(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -390,7 +394,7 @@ function enemyCriticalKick(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -412,14 +416,14 @@ function enemyBasicPotion(attacker, enemy){
     enemy.currentHealth = enemy.maxHealth;
   }
   enemyHealthStatus(enemy);
-  console.log(enemy.name + ' gained 8 health and now has ' + enemy.currentHealth + ' health remaining');
+  $('#enemy_attack_update').text(enemy.name + ' gained 8 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalPotion(attacker, enemy){
   enemy.currentHealth = enemy.currentHealth + 12;
   enemyHealthStatus(enemy);
-  console.log('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' gained 12 health and now has ' + enemy.currentHealth + ' health remaining');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' gained 12 health and now has ' + enemy.currentHealth + ' health remaining');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -437,13 +441,13 @@ function enemyIncreaseAttackRandomizer(attacker, enemy){
 
 function enemyBasicIncreaseAttack(attacker, enemy){
   enemy.currentPower = enemy.currentPower + 2;
-  console.log(enemy.name + '\'s attack increased');
+  $('#enemy_attack_update').text(enemy.name + '\'s attack increased');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalIncreaseAttack(attacker, enemy){
   enemy.currentPower = enemy.currentPower + 4;
-  console.log(enemy.name + '\'s attack increased');
+  $('#enemy_attack_update').text(enemy.name + '\'s attack increased');
   playerHealthCheck(attacker, enemy);
 }
 
