@@ -115,13 +115,22 @@ body {
   position: relative;
 }
 
-.foot_gamer_console {
+.foot_gamer_console_attack {
   color: #fff;
   display: inline-block;
+  vertical-align: top;
+  width: 300px;
 }
 
-.foot_gamer_console button{
+.foot_gamer_console_attack button{
   color: #000;
+  margin-right:15px;
+}
+
+.foot_gamer_console_taunt {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .foot_game_img {
