@@ -1,5 +1,6 @@
 $(document).ready(function(){
   $('body').prepend(JST.application());
+  $('.actionButton').prop('disabled', true);
 });
 
 
@@ -432,8 +433,8 @@ Pop-up selector
 $('#players').on('change', function() {
   value = $(this).val();
   if (value !== "") {
-    $('.pop_up_console').fadeOut('slow', function(){
-    });
+    $('.pop_up_console').fadeOut('slow', function(){});
+    $('.actionButton').prop('disabled', false);
     currentEnemy = pickEnemy();
     if (value === "Jake") {
       heroJake(jake);
