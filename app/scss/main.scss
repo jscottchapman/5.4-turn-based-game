@@ -14,18 +14,27 @@ $very-light-gray: #fafafa;
 
 
 body {
+  background-image: url('../templates/assets/img/bg.png');
+  background-size: cover;
   background-color: #000;
   font-family: $base-font-family;
 }
 
+@font-face {
+    font-family: joystix;
+    src: url(../templates/assets/fonts/joystix_monospace.ttf);
+}
+
+
 .container {
   width:950px;
   margin: 0 auto;
+  border: 2px solid #000;
 
 }
 
 .pop_up_console_screen {
-  background-color: #000;
+  background-color: #1d2e42;
   position: absolute;
   z-index: 1;
   top:0;
@@ -61,28 +70,45 @@ body {
 
 .scene {
   width:100%;
-  height:400px;
+  height:450px;
   margin-top:0;
   background-image: url('../templates/assets/img/street_scene.jpg');
   background-size: 100%;
-  background-position: 0px -100px;
+  background-position: 0px -82px;
   position: relative;
 }
 
 .playerHealthDisplay {
   position: absolute;
-  width:200px;
+  width:300px;
   height:100px;
   top:0;
   left:0;
+  margin-top: 5px;
+}
+
+.playerHealthDisplay h1 {
+  display: inline-block;
+  font-size: 1.7rem;
+  margin-left: 20px;
+  margin-top: 0;
 }
 
 .enemyHealthDisplay {
+  vertical-align: top;
   position: absolute;
-  width:200px;
+  width:400px;
   height:100px;
   top:0;
   right:0;
+  margin-top: 5px;
+}
+
+.enemyHealthDisplay h1 {
+  display: inline-block;
+  font-size: 1.7rem;
+  margin-left: 20px;
+  margin-top: 0;
 }
 
 
@@ -108,8 +134,8 @@ body {
 
 .foot {
   width:100%;
-  height: 200px;
   margin-bottom: 0px;
+  height: 111px;
   background-color: #000;
   font-family: helvetica;
   letter-spacing: 1px;
@@ -124,8 +150,52 @@ body {
   position: relative;
 }
 
-.foot_gamer_console_attack {
+.foot_game ul {
+  padding-top:5px;
+  margin: 0px;
+}
+
+.playerName {
+  margin-left: 10px;
+  color: #faa306;
+  font-family: joystix;
+  letter-spacing: 2px;
+  font-size:1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.enemyName {
+  color: #faa306;
+  font-family: joystix;
+  letter-spacing: 2px;
+  font-size:1.6rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+#player_attack_update {
   color: #fff;
+}
+
+#enemy_attack_update {
+  color: #fff;
+}
+
+#greeting_brag_update {
+  font-family: joystix;
+  font-size: 10px;
+  color: #d15806;
+  font-weight: bold;
+}
+
+
+.foot_gamer_console_attack {
+  margin-left: 10px;
+  font-family: joystix;
+  color: #fff;
+  font-size: 10px;
   display: inline-block;
   vertical-align: top;
   width: 400px;
@@ -133,22 +203,14 @@ body {
 
 .foot_gamer_console_attack button{
   color: #000;
-  margin-right:15px;
+
 }
 
 .foot_gamer_console_taunt {
+  margin-top: 10px;
+  margin-left: 30px;
   color: #fff;
   display: inline-block;
   vertical-align: top;
-  width:200px;
-}
-
-.foot_game_img {
-  display: inline-block;
-}
-
-.foot_game_img img{
-  position: absolute;
-  top: 0px;
-  right: 0px;
+  width:400px;
 }

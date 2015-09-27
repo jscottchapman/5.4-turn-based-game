@@ -23,6 +23,8 @@
   </head>
   <body>
 
+
+
     <div class="pop_up_console_screen"></div>
     <div id="selectAPlayer" class="pop_up_console">
       <li><b><font size="3rem">MISSION:</font></b><p>AHH!! Somebody help!!! Some <b>IMPOSTORS</b> just hijacked a plane and
@@ -38,10 +40,12 @@
         </select></form></li>
     </div>
 
+
 <div class="container">
+
   <div class="scene">
-    <div class="playerHealthDisplay"><h1 class = "playerHealthNumber"></h1></div>
-    <div class="enemyHealthDisplay"><h1 class = "enemyHealthNumber"></h1></div>
+    <div class="playerHealthDisplay"><span class="playerName"></span><h1 class="playerHealthNumber"></h1></div>
+    <div class="enemyHealthDisplay"><span class="enemyName"></span><h1 class="enemyHealthNumber"></h1></div>
     <div id="playerDisplayJake" class="playerDisplay"><img src="./templates/assets/img/player_jake.png" style="height:100%; margin-left:70px;"></div>
     <div id="playerDisplayFaith" class="playerDisplay"><img src="./templates/assets/img/player_faith.png" style="height:100%; margin-left:70px;"></div>
     <div id="playerDisplayJoel" class="playerDisplay"><img src="./templates/assets/img/player_joel.png" style="height:100%; margin-left:70px;"></div>
@@ -55,16 +59,17 @@
 
       <ul>
         <li class="foot_gamer_console_attack">
-          <p id="player_attack_update">Please select your attack!</p>
+          <p id="player_attack_update"><font style="font-family: joystix; font-size:10px">Please select your attack!</font></p>
           <p id="enemy_attack_update"></p>
           <button class="actionButton punchButton">Punch</button>
           <button class="actionButton kickButton">Kick</button>
           <button class="actionButton potionButton">Potion</button>
           <button class="actionButton increaseAttackButton">Attack</button>
+
         </li>
         <li class="foot_gamer_console_taunt">
-          <span class="enemyName">Enemy: </span><p id="greeting_brag_update">Please select your attack!</p></li>
-        <li class="foot_game_img"><img src="./templates/assets/img/logo.png"></li>
+          <span class="enemyName" style="font-size:14px;"></span><p id="greeting_brag_update"></p><audio><source src="./templates/assets/music/gamemusic.mp3" type="audio/mp3"></audio></li>
+
 
         <!-- <div class="foot_game_console">
           <button class="actionButton punchButton">Punch</button>

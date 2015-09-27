@@ -86,7 +86,7 @@ function pickEnemy() {
   if (pickEnemyArray.length > 0) {
     var enemySelect = _.sample(pickEnemyArray);
 
-    $('.enemyName').text(enemySelect.name + " :");
+    $('.enemyName').text(enemySelect.name);
 
     enemyHealthStatus(enemySelect);
     if (enemySelect === wuTangJake) {
@@ -203,7 +203,7 @@ PLAYER HEALTH DISPLAY FUNCTIONS
 ****************************************************/
 
 function enemyHealthStatus(enemy){
-$(".enemyHealthNumber").text(enemy.currentHealth);
+$(".enemyHealthNumber").text(enemy.currentHealth).append(' <img src="../templates/assets/img/life_heart.png">');
 }
 
 
@@ -309,7 +309,8 @@ ENEMY ATTACK FUNCTIONS
 Enemy Health Display function
 ***************************************************/
 function attackerHealthStatus(attacker){
-$(".playerHealthNumber").text(attacker.currentHealth);
+$(".playerHealthNumber").text(attacker.currentHealth).append(' <img src="../templates/assets/img/life_heart.png">');
+;
 }
 
 /*********
@@ -546,18 +547,20 @@ function heroJake(thisHero){
   hero = jake;
   attackerHealthStatus(jake);
   findJake.style.display = "block";
-
+  $('.playerName').text("Jake");
 }
 
 function heroFaith(thisHero){
   hero = faith;
   attackerHealthStatus(faith);
-
   findFaith.style.display = "block";
+  $('.playerName').text("Faith");
+
 }
 
 function heroJoel(thisHero){
   hero = joel;
   attackerHealthStatus(joel);
   findJoel.style.display = "block";
+  $('.playerName').text("Joel");
 }
