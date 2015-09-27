@@ -26,6 +26,10 @@ var findWuTangJake = document.getElementById("enemyDisplayWutangJake");
 var findSedatedJake = document.getElementById("enemyDisplaySedatedJake");
 var findPithyJake = document.getElementById("enemyDisplayPithyJake");
 
+var actionImage = $('.actionPopup');
+var heroBuff = $('.heroBuff');
+var enemyBuff = $('.enemyBuff');
+
 /**********
 Enemy Instances
 **********/
@@ -157,6 +161,7 @@ PROTOTYPES
 Player.prototype.punch = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
+  actionImage.css({'background-image': 'url(../templates/assets/img/boom.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     basicPunch(attacker, thisEnemy);
   } else {
@@ -167,6 +172,7 @@ Player.prototype.punch = function(enemy){
 Player.prototype.kick = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
+  actionImage.css({'background-image': 'url(../templates/assets/img/kapow.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     basicKick(attacker, thisEnemy);
   } else {
@@ -177,6 +183,7 @@ Player.prototype.kick = function(enemy){
 Player.prototype.potion = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
+  heroBuff.css({'background-image': 'url(../templates/assets/img/potion.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     basicPotion(attacker, thisEnemy);
   } else {
@@ -187,6 +194,7 @@ Player.prototype.potion = function(enemy){
 Player.prototype.increaseAttack = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
+  heroBuff.css({'background-image': 'url(../templates/assets/img/attack.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     basicIncreaseAttack(attacker, thisEnemy);
   } else {
@@ -313,7 +321,6 @@ Enemy Health Display function
 ***************************************************/
 function attackerHealthStatus(attacker){
 $(".playerHealthNumber").text(attacker.currentHealth).append(' <img src="../templates/assets/img/life_heart.png">');
-;
 }
 
 /*********
@@ -339,6 +346,7 @@ Enemy attack functions - Punch
 *********/
 
 function enemyPunchRandomizer(attacker, enemy){
+  actionImage.css({'background-image': 'url(../templates/assets/img/zam.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicPunch(attacker, enemy);
   } else {
@@ -373,6 +381,7 @@ Enemy attack functions - Kick
 *********/
 
 function enemyKickRandomizer(attacker, enemy){
+  actionImage.css({'background-image': 'url(../templates/assets/img/pow.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicKick(attacker, enemy);
   } else {
@@ -407,6 +416,7 @@ Enemy attack functions - Potion
 *********/
 
 function enemyPotionRandomizer(attacker, enemy){
+  enemyBuff.css({'background-image': 'url(../templates/assets/img/potion.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicPotion(attacker, enemy);
   } else {
@@ -436,6 +446,7 @@ Enemy attack functions - Increase Attack
 *********/
 
 function enemyIncreaseAttackRandomizer(attacker, enemy){
+  enemyBuff.css({'background-image': 'url(../templates/assets/img/attack.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicIncreaseAttack(attacker, enemy);
   } else {
@@ -467,18 +478,32 @@ HEALTH FUNCTIONS
 
 function enemyHealthCheck(attacker, enemy){
   if (enemy.currentHealth > 0) {
+    setTimeout(function(){
+      actionImage.css({'display': 'none'});
+      heroBuff.css({'display': 'none'});
+      enemyBuff.css({'display': 'none'});
+    }, 500);
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
+    setTimeout(function(){
+      actionImage.css({'display': 'none'});
+      heroBuff.css({'display': 'none'});
+      enemyBuff.css({'display': 'none'});
+    }, 500);
+    setTimeout(function(){(alert('Congratulations! You defeated ' + enemy.name));}, 500);
     $('.enemyDisplay').fadeOut(3000, function(){});
-    if(alert('Congratulations! You defeated ' + enemy.name)){}
-    else window.location.reload();
-
     attacker.currentHealth = attacker.maxHealth;
-    currentEnemy = pickEnemy();
+    attackerHealthStatus(attacker);
+    setTimeout(function(){currentEnemy = pickEnemy();}, 2000);
   }
 }
 
 function playerHealthCheck(attacker, enemy){
+  setTimeout(function(){
+    actionImage.css({'display': 'none'});
+    heroBuff.css({'display': 'none'});
+    enemyBuff.css({'display': 'none'});
+  }, 500);
   if (attacker.currentHealth <= 0) {
     if(alert('Game over!!')){}
     else window.location.reload();

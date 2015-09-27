@@ -214,3 +214,39 @@ body {
   vertical-align: top;
   width:400px;
 }
+
+.actionPopup {
+  position: absolute;
+  display: none;
+  background-image: url(../templates/assets/img/boom.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 300px;
+  width: 300px;
+  left: 250px;
+  top: 150px;
+}
+
+.heroBuff {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-image: url(../templates/assets/img/potion.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  top: 75px;
+  left: 70px;
+  display: none;
+}
+
+.enemyBuff {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-image: url(../templates/assets/img/potion.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  top: 75px;
+  right: 200px;
+  display: none;
+}
