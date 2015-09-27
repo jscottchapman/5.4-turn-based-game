@@ -482,15 +482,15 @@ function enemyHealthCheck(attacker, enemy){
       actionImage.css({'display': 'none'});
       heroBuff.css({'display': 'none'});
       enemyBuff.css({'display': 'none'});
-    }, 500);
+    }, 750);
     setTimeout(function(){enemyAttack(attacker, enemy);}, 1000);
   } else {
     setTimeout(function(){
       actionImage.css({'display': 'none'});
       heroBuff.css({'display': 'none'});
       enemyBuff.css({'display': 'none'});
-    }, 500);
-    setTimeout(function(){(alert('Congratulations! You defeated ' + enemy.name));}, 500);
+    }, 750);
+    setTimeout(function(){(alert('Congratulations! You defeated ' + enemy.name));}, 750);
     $('.enemyDisplay').fadeOut(3000, function(){});
     attacker.currentHealth = attacker.maxHealth;
     attackerHealthStatus(attacker);
@@ -503,7 +503,7 @@ function playerHealthCheck(attacker, enemy){
     actionImage.css({'display': 'none'});
     heroBuff.css({'display': 'none'});
     enemyBuff.css({'display': 'none'});
-  }, 500);
+  }, 750);
   if (attacker.currentHealth <= 0) {
     if(alert('Game over!!')){}
     else window.location.reload();
