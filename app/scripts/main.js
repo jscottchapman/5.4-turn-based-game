@@ -162,6 +162,7 @@ Player.prototype.punch = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
   actionImage.css({'background-image': 'url(../templates/assets/img/boom.png)', 'display': 'block'});
+  $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicPunch(attacker, thisEnemy);
   } else {
@@ -173,6 +174,7 @@ Player.prototype.kick = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
   actionImage.css({'background-image': 'url(../templates/assets/img/kapow.png)', 'display': 'block'});
+  $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicKick(attacker, thisEnemy);
   } else {
@@ -184,6 +186,7 @@ Player.prototype.potion = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
   heroBuff.css({'background-image': 'url(../templates/assets/img/potion.png)', 'display': 'block'});
+  $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicPotion(attacker, thisEnemy);
   } else {
@@ -195,6 +198,7 @@ Player.prototype.increaseAttack = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
   heroBuff.css({'background-image': 'url(../templates/assets/img/attack.png)', 'display': 'block'});
+  $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicIncreaseAttack(attacker, thisEnemy);
   } else {
@@ -229,7 +233,7 @@ function basicPunch(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  $('#player_attack_update').text(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text(attacker.name + ' punched ' + enemy.name + ' for ' + roundDamage + ' damage');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -240,7 +244,7 @@ function criticalPunch(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' punched ' + enemy.name + ' for '  + roundDamage + ' damage');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -255,7 +259,7 @@ function basicKick(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  $('#player_attack_update').text(attacker.name + ' hit ' + enemy.name + ' for ' + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text(attacker.name + ' kicked ' + enemy.name + ' for ' + roundDamage + ' damage');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -266,7 +270,7 @@ function criticalKick(attacker, enemy){
     enemy.currentHealth = 0;
   }
   enemyHealthStatus(enemy);
-  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' hit ' + enemy.name + ' for '  + roundDamage + ' damage. ' + enemy.name + ' has ' + enemy.currentHealth + ' health remaining.');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' kicked ' + enemy.name + ' for '  + roundDamage + ' damage');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -280,14 +284,14 @@ function basicPotion(attacker, enemy){
     attacker.currentHealth = attacker.maxHealth;
   }
   attackerHealthStatus(attacker);
-  $('#player_attack_update').text(attacker.name + ' gained 8 health and now has ' + attacker.currentHealth + ' health remaining');
+  $('#player_attack_update').text(attacker.name + ' used a potion and gained 8 health');
   enemyHealthCheck(attacker, enemy);
 }
 
 function criticalPotion(attacker, enemy){
   attacker.currentHealth = attacker.currentHealth + 12;
   attackerHealthStatus(attacker);
-  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' gained 12 health and now has ' + attacker.currentHealth + ' health remaining');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' used a potion and gained 12 health');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -361,7 +365,7 @@ function enemyBasicPunch(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  $('#enemy_attack_update').text(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text(enemy.name + ' punched ' + attacker.name + ' for ' + roundDamage + ' damage.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -372,7 +376,7 @@ function enemyCriticalPunch(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' punched ' + attacker.name + ' for '  + roundDamage + ' damage.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -396,7 +400,7 @@ function enemyBasicKick(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  $('#enemy_attack_update').text(enemy.name + ' hit ' + attacker.name + ' for ' + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text(enemy.name + ' kicked ' + attacker.name + ' for ' + roundDamage + ' damage.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -407,7 +411,7 @@ function enemyCriticalKick(attacker, enemy){
     attacker.currentHealth = 0;
   }
   attackerHealthStatus(attacker);
-  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' hit ' + attacker.name + ' for '  + roundDamage + ' damage. ' + attacker.name + ' has ' + attacker.currentHealth + ' health remaining.');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' kicked ' + attacker.name + ' for '  + roundDamage + ' damage.');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -430,14 +434,14 @@ function enemyBasicPotion(attacker, enemy){
     enemy.currentHealth = enemy.maxHealth;
   }
   enemyHealthStatus(enemy);
-  $('#enemy_attack_update').text(enemy.name + ' gained 8 health and now has ' + enemy.currentHealth + ' health remaining');
+  $('#enemy_attack_update').text(enemy.name + ' used a potion and gained 8 health');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalPotion(attacker, enemy){
   enemy.currentHealth = enemy.currentHealth + 12;
   enemyHealthStatus(enemy);
-  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' gained 12 health and now has ' + enemy.currentHealth + ' health remaining');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' used a potion and gained 12 health');
   playerHealthCheck(attacker, enemy);
 }
 
@@ -490,8 +494,8 @@ function enemyHealthCheck(attacker, enemy){
       heroBuff.css({'display': 'none'});
       enemyBuff.css({'display': 'none'});
     }, 750);
-    setTimeout(function(){(alert('Congratulations! You defeated ' + enemy.name));}, 750);
     $('.enemyDisplay').fadeOut(3000, function(){});
+    setTimeout(function(){(alert('Congratulations! You defeated ' + enemy.name));}, 750);
     attacker.currentHealth = attacker.maxHealth;
     attackerHealthStatus(attacker);
     setTimeout(function(){currentEnemy = pickEnemy();}, 2000);
@@ -543,7 +547,7 @@ $('.actionButton').click(function(){
     $('.actionButton').prop('disabled', true);
     setTimeout(function(){
         $('.actionButton').prop('disabled', false);
-    }, 1000);
+    }, 1850);
 });
 
 
