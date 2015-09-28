@@ -185,7 +185,7 @@ Player.prototype.kick = function(enemy){
 Player.prototype.potion = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
-  heroBuff.css({'background-image': 'url(../templates/assets/img/potion.png)', 'display': 'block'});
+  heroBuff.css({'background-image': 'url(../templates/assets/img/beer.png)', 'display': 'block'});
   $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicPotion(attacker, thisEnemy);
@@ -284,14 +284,14 @@ function basicPotion(attacker, enemy){
     attacker.currentHealth = attacker.maxHealth;
   }
   attackerHealthStatus(attacker);
-  $('#player_attack_update').text(attacker.name + ' used a potion and gained 8 health');
+  $('#player_attack_update').text(attacker.name + ' drank a beer and gained 8 health');
   enemyHealthCheck(attacker, enemy);
 }
 
 function criticalPotion(attacker, enemy){
   attacker.currentHealth = attacker.currentHealth + 12;
   attackerHealthStatus(attacker);
-  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' used a potion and gained 12 health');
+  $('#player_attack_update').text('CCCCCCOMBO BREAKER!!! ' + attacker.name + ' drank a beer and gained 12 health');
   enemyHealthCheck(attacker, enemy);
 }
 
@@ -420,7 +420,7 @@ Enemy attack functions - Potion
 *********/
 
 function enemyPotionRandomizer(attacker, enemy){
-  enemyBuff.css({'background-image': 'url(../templates/assets/img/potion.png)', 'display': 'block'});
+  enemyBuff.css({'background-image': 'url(../templates/assets/img/beer.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicPotion(attacker, enemy);
   } else {
@@ -434,14 +434,14 @@ function enemyBasicPotion(attacker, enemy){
     enemy.currentHealth = enemy.maxHealth;
   }
   enemyHealthStatus(enemy);
-  $('#enemy_attack_update').text(enemy.name + ' used a potion and gained 8 health');
+  $('#enemy_attack_update').text(enemy.name + ' drank a beer and gained 8 health');
   playerHealthCheck(attacker, enemy);
 }
 
 function enemyCriticalPotion(attacker, enemy){
   enemy.currentHealth = enemy.currentHealth + 12;
   enemyHealthStatus(enemy);
-  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' used a potion and gained 12 health');
+  $('#enemy_attack_update').text('CCCCCCOMBO BREAKER!!! ' + enemy.name + ' drank a beer and gained 12 health');
   playerHealthCheck(attacker, enemy);
 }
 
