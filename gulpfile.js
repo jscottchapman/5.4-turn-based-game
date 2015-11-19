@@ -6,7 +6,6 @@ var gulp         = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var babel        = require('gulp-babel');
 var browserSync  = require('browser-sync');
-var cache        = require('gulp-cache');
 var concat       = require('gulp-concat');
 var declare      = require('gulp-declare');
 var del          = require('del');
@@ -14,7 +13,6 @@ var ghPages      = require('gulp-gh-pages');
 var gulpIf       = require('gulp-if');
 var gutil        = require('gulp-util');
 var handlebars   = require('gulp-handlebars');
-var imagemin     = require('gulp-imagemin');
 var minifyCSS    = require('gulp-minify-css');
 var plumber      = require('gulp-plumber');
 var runSequence  = require('run-sequence');
@@ -68,36 +66,14 @@ gulp.task('templates', function() {
     .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('images', function(){
-  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
-    .pipe(plumber())
-    // Caching images that ran through imagemin
-    .pipe(cache(imagemin({
-      progressive: true,
-      interlaced: true,
-      // don't remove IDs from SVGs, they are often used
-      // as hooks for embedding and styling
-      svgoPlugins: [{cleanupIDs: false}]
-    })))
-    .pipe(gulp.dest('dist/images'))
-});
-
-gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'))
+gulp.task('assets', function(){
+  return gulp.src('app/templates/assets/**/*.*')
+    .pipe(gulp.dest('dist/templates/assets'))
 });
 
 gulp.task('clean', function(done) {
   del('dist').then(function(paths){
     console.log('Deleted files/folders:\n', paths.join('\n'));
-    cache.clearAll(done);
-  });
-});
-
-gulp.task('clean:dist', function(done){
-  del(['dist/**/*', '!dist/images', '!dist/images/**/*']).then(function (paths) {
-    console.log('Deleted files/folders:\n', paths.join('\n'));
-    done();
   });
 });
 
@@ -141,15 +117,13 @@ gulp.task('watch', ['browserSync', 'styles'], function(){
   gulp.watch('app/scss/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/templates/**/*.hbs', ['templates']);
-  gulp.watch('app/images/**/*.+(png|jpg|jpeg|gif|svg)', ['images']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
+  gulp.watch('app/templates/assets/**/*', ['assets']);
   gulp.watch('app/*.html', ['useref']);
   gulp.watch('bower.json', ['wiredep']);
 });
 
 gulp.task('build', function (callback) {
-  runSequence('clean:dist',
-    ['styles', 'scripts', 'templates', 'wiredep', 'useref', 'images', 'fonts'],
+  runSequence(['styles', 'scripts', 'templates', 'wiredep', 'useref', 'assets'],
     callback
   );
 });
