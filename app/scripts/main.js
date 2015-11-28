@@ -161,7 +161,7 @@ PROTOTYPES
 Player.prototype.punch = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
-  actionImage.css({'background-image': 'url(../templates/assets/img/boom.png)', 'display': 'block'});
+  actionImage.css({'background-image': 'url(./images/img/boom.png)', 'display': 'block'});
   $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicPunch(attacker, thisEnemy);
@@ -173,7 +173,7 @@ Player.prototype.punch = function(enemy){
 Player.prototype.kick = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
-  actionImage.css({'background-image': 'url(../templates/assets/img/kapow.png)', 'display': 'block'});
+  actionImage.css({'background-image': 'url(./images/img/kapow.png)', 'display': 'block'});
   $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicKick(attacker, thisEnemy);
@@ -185,7 +185,7 @@ Player.prototype.kick = function(enemy){
 Player.prototype.potion = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
-  heroBuff.css({'background-image': 'url(../templates/assets/img/beer.png)', 'display': 'block'});
+  heroBuff.css({'background-image': 'url(./images/img/beer.png)', 'display': 'block'});
   $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicPotion(attacker, thisEnemy);
@@ -197,7 +197,7 @@ Player.prototype.potion = function(enemy){
 Player.prototype.increaseAttack = function(enemy){
   var attacker = this;
   var thisEnemy = enemy;
-  heroBuff.css({'background-image': 'url(../templates/assets/img/attack.png)', 'display': 'block'});
+  heroBuff.css({'background-image': 'url(./images/img/attack.png)', 'display': 'block'});
   $('#enemy_attack_update').text('');
   if (Math.random() > 1/4) {
     basicIncreaseAttack(attacker, thisEnemy);
@@ -218,7 +218,7 @@ PLAYER HEALTH DISPLAY FUNCTIONS
 ****************************************************/
 
 function enemyHealthStatus(enemy){
-$(".enemyHealthNumber").text(enemy.currentHealth).append(' <img src="../templates/assets/img/life_heart.png">');
+$(".enemyHealthNumber").text(enemy.currentHealth).append(' <img src="./images/img/life_heart.png">');
 }
 
 
@@ -324,7 +324,7 @@ ENEMY ATTACK FUNCTIONS
 Enemy Health Display function
 ***************************************************/
 function attackerHealthStatus(attacker){
-$(".playerHealthNumber").text(attacker.currentHealth).append(' <img src="../templates/assets/img/life_heart.png">');
+$(".playerHealthNumber").text(attacker.currentHealth).append(' <img src="./images/img/life_heart.png">');
 }
 
 /*********
@@ -350,7 +350,7 @@ Enemy attack functions - Punch
 *********/
 
 function enemyPunchRandomizer(attacker, enemy){
-  actionImage.css({'background-image': 'url(../templates/assets/img/zam.png)', 'display': 'block'});
+  actionImage.css({'background-image': 'url(./images/img/zam.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicPunch(attacker, enemy);
   } else {
@@ -385,7 +385,7 @@ Enemy attack functions - Kick
 *********/
 
 function enemyKickRandomizer(attacker, enemy){
-  actionImage.css({'background-image': 'url(../templates/assets/img/pow.png)', 'display': 'block'});
+  actionImage.css({'background-image': 'url(./images/img/pow.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicKick(attacker, enemy);
   } else {
@@ -420,7 +420,7 @@ Enemy attack functions - Potion
 *********/
 
 function enemyPotionRandomizer(attacker, enemy){
-  enemyBuff.css({'background-image': 'url(../templates/assets/img/beer.png)', 'display': 'block'});
+  enemyBuff.css({'background-image': 'url(./images/img/beer.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicPotion(attacker, enemy);
   } else {
@@ -450,7 +450,7 @@ Enemy attack functions - Increase Attack
 *********/
 
 function enemyIncreaseAttackRandomizer(attacker, enemy){
-  enemyBuff.css({'background-image': 'url(../templates/assets/img/attack.png)', 'display': 'block'});
+  enemyBuff.css({'background-image': 'url(./images/img/attack.png)', 'display': 'block'});
   if (Math.random() > 1/4) {
     enemyBasicIncreaseAttack(attacker, enemy);
   } else {
